@@ -1,24 +1,12 @@
 kind: Service
-apiVersion: v1
 metadata:
-  name: fastapi-app
-  namespace: fastapi
-  labels:
-    app: fastapi-app
-    app.kubernetes.io/component: fastapi-app
-    app.kubernetes.io/instance: fastapi-app
+  name: fastapi-service
+  namespace: team1-app
 spec:
-  clusterIP: 172.30.246.200
-  ipFamilies:
-    - IPv4
-  ports:
-    - name: 8080-tcp
-      protocol: TCP
-      port: 8080
-      targetPort: 8080
-  internalTrafficPolicy: Cluster
-  type: ClusterIP
-  ipFamilyPolicy: SingleStack
-  sessionAffinity: None
   selector:
-    deployment: fastapi-app
+    app: fastapi
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
