@@ -1,0 +1,20 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: fastapi-app
+  namespace: fastapi
+  labels:
+    app: fastapi-app
+    app.kubernetes.io/component: fastapi-app
+    app.kubernetes.io/instance: fastapi-app
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: fastapi-app-fastapi.apps.con4.mtp.local
+  to:
+    kind: Service
+    name: fastapi-app
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  wildcardPolicy: None
