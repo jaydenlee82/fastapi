@@ -1,11 +1,14 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: fastapi-app
+  name: fastapi
   namespace: team1-app
+  labels:
+    app: fastapi
+    app.kubernetes.io/component: fastapi
 spec:
   to:
     kind: Service
-    name: fastapi-service  # 서비스 이름과 연결
+    name: fastapi-service
   port:
     targetPort: 8080
