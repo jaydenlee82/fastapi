@@ -1,7 +1,7 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: fastapi
+  name: fastapi-route
   namespace: team1-app
   labels:
     app: fastapi
