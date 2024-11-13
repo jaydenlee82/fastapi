@@ -17,4 +17,4 @@ spec:
         - name: fastapi
           image: 'image-registry.openshift-image-registry.svc:5000/team1-app/my-fastapi-image:2024-11-13-14-43-03'
           ports:
-            - containerPort: 80
+            - containerPort: 8080
