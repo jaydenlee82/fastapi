@@ -1,20 +1,13 @@
-kind: Route
 apiVersion: route.openshift.io/v1
+kind: Route
 metadata:
   name: fastapi-app
-  namespace: fastapi
-  labels:
-    app: fastapi-app
-    app.kubernetes.io/component: fastapi-app
-    app.kubernetes.io/instance: fastapi-app
-  annotations:
-    openshift.io/host.generated: 'true'
+  namespace: team1-app
 spec:
-  host: fastapi-app-fastapi.apps.con4.mtp.local
   to:
     kind: Service
-    name: fastapi-app
-    weight: 100
+    name: fastapi-service  # 서비스 이름과 연결
   port:
-    targetPort: 8080-tcp
-  wildcardPolicy: None
+    targetPort: 80
+  tls:
+    termination: edge  # HTTPS를 위한 TLS 종료 설정
