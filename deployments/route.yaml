@@ -8,4 +8,4 @@ spec:
     kind: Service
     name: fastapi-service  # 서비스 이름과 연결
   port:
-    targetPort: 80
+    targetPort: 8080
