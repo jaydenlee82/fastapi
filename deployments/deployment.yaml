@@ -1,45 +1,20 @@
-kind: Deployment
 apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: fastapi-app
-  namespace: fastapi
-  labels:
-    app: fastapi-app
-    app.kubernetes.io/component: fastapi-app
-    app.kubernetes.io/instance: fastapi-app
+  name: fastapi-deployment
+  namespace: team1-app 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      deployment: fastapi-app
+      app: fastapi
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        deployment: fastapi-app
-      annotations:
-        openshift.io/generated-by: OpenShiftNewApp
+        app: fastapi
     spec:
       containers:
-        - name: fastapi-app
-          image: >-
-            image-registry.openshift-image-registry.svc:5000/team1-app/fastapi:latest
+        - name: fastapi
+          image: 'image-registry.openshift-image-registry.svc:5000/team1-app/my-fastapi-image:latest'
           ports:
-            - containerPort: 8080
-              protocol: TCP
-          resources: {}
-          terminationMessagePath: /dev/termination-log
-          terminationMessagePolicy: File
-          imagePullPolicy: IfNotPresent
-      restartPolicy: Always
-      terminationGracePeriodSeconds: 30
-      dnsPolicy: ClusterFirst
-      securityContext: {}
-      schedulerName: default-scheduler
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 25%
-      maxSurge: 25%
-  revisionHistoryLimit: 10
-  progressDeadlineSeconds: 600
+            - containerPort: 80
