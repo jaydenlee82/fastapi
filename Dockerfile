@@ -1,5 +1,5 @@
 
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
+FROM python:3.7
 
 WORKDIR /app
 
